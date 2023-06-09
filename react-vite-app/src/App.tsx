@@ -1,24 +1,39 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
-import { Home } from './pages/Home';
-import NotFound from './pages/NotFound';
-import { UserDetails } from './pages/UserDetails';
-import { AboutMe } from './pages/AboutMe';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
+import { Home } from './routes/Home';
+import NotFound from './routes/NotFound';
+import { UserDetails } from './routes/UserDetails';
+import { AboutMe } from './routes/AboutMe';
+import Root from './routes/Root';
 
-export function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<AboutMe />} />
-      <Route path="/user" element={<UserDetails />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+export function AppRouter() {
+  const router = createHashRouter([
+    {
+      path: '/',
+      element: <Root />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: '/about',
+          element: <AboutMe />,
+        },
+        {
+          path: '/user',
+          element: <UserDetails />,
+        },
+        {
+          path: '*',
+          element: <NotFound />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
-export function WrappedApp() {
-  return (
-    <HashRouter>
-      <App />
-    </HashRouter>
-  );
+export function App() {
+  return <AppRouter />;
 }
