@@ -17,7 +17,6 @@ export const PostItem = ({ title, text }: PostItemType) => {
       className="flex-grow-1 flex-row bg-light"
     >
       <Link to="/user">
-        {/* <Card.Img variant="left" src="holder.js/100px180" /> */}
         <div
           className="d-flex p-3 align-items-center justify-content-center"
           style={{ height: '100%' }}
@@ -32,11 +31,11 @@ export const PostItem = ({ title, text }: PostItemType) => {
         </div>
       </Link>
       <Card.Body>
-        <Card.Title className="text-capitalize">{title}</Card.Title>
-        <Card.Text className="text-capitalize">{text}</Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{text}</Card.Text>
         <Button
           onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
+          aria-controls="collapse-text"
           aria-expanded={open}
           variant="outline-primary"
         >
@@ -45,7 +44,7 @@ export const PostItem = ({ title, text }: PostItemType) => {
         <Collapse in={open}>
           <div
             className="card card-body"
-            id="example-collapse-text"
+            id="collapse-text"
             style={{ marginTop: '16px' }}
           >
             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus

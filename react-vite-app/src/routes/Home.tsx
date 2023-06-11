@@ -1,26 +1,32 @@
-import { useEffect } from 'react';
-import { Container, Stack } from 'react-bootstrap';
-import { PostItem } from '../components/home/PostItem';
+/* eslint-disable no-nested-ternary */
+import { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { getPosts, selectPosts } from '../redux/slices/postsSlice';
+import { Post, getPosts, selectPosts } from '../redux/slices/postsSlice';
+import { PostList } from '../components/home/PostList';
+import { PostFilter } from '../components/home/PostFilter';
+import { usePosts } from '../hooks/usePosts';
 
 export const Home = () => {
   const dispatch = useAppDispatch();
+  const storePosts = useAppSelector(selectPosts);
+  const [posts, setPosts] = useState<Array<Post>>([]);
+  const [filter, setFilter] = useState({ sort: '', query: '' });
+  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  const posts = useAppSelector(selectPosts);
+  useEffect(() => {
+    setPosts(storePosts);
+  }, [storePosts]);
 
   return (
     <Container>
-      <h1 className="mb-3 text-primary">Posts</h1>
-      <Stack gap={4}>
-        {posts.map((post) => (
-          <PostItem key={post.id} title={post.title} text={post.body} />
-        ))}
-      </Stack>
+      <h1 className="mb-4 text-primary">Posts</h1>
+      <PostFilter filter={filter} setFilter={setFilter} />
+      <PostList posts={sortedAndSearchedPosts} />
     </Container>
   );
 };
