@@ -1,15 +1,32 @@
 /* eslint-disable import/no-cycle */
 import { call, put } from 'redux-saga/effects';
+import { PayloadAction } from '@reduxjs/toolkit';
 import { requestGetPosts, requestGetPostsByUserId } from '../requests/posts';
-import { Post, setPosts } from '../../slices/postsSlice';
+import {
+  Post,
+  setPostError,
+  setPostTotalCount,
+  setPosts,
+} from '../../slices/postsSlice';
 
-export function* handleGetPosts() {
+export type PaginationParams = {
+  limit?: number;
+  page?: number;
+};
+
+export function* handleGetPosts(action: PayloadAction<PaginationParams>) {
   try {
-    const response: { data: Array<Post> } = yield call(requestGetPosts);
-    const { data } = response;
+    const { payload } = action;
+    const { limit, page } = payload;
+    const response: { headers: Record<string, string>; data: Array<Post> } =
+      yield call(requestGetPosts, limit, page);
+    const { headers, data } = response;
     yield put(setPosts(data));
+    yield put(setPostTotalCount(+headers['x-total-count']));
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) {
+      yield put(setPostError(error.message));
+    }
   }
 }
 

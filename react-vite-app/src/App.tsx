@@ -20,7 +20,7 @@ export function AppRouter() {
           element: <AboutMe />,
         },
         {
-          path: '/user',
+          path: '/user/:id',
           element: <UserDetails />,
         },
         {

@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../components/header/Header';
+import { Footer } from '../components/footer/Footer';
 
 export default function Root() {
   return (
@@ -7,12 +8,13 @@ export default function Root() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh',
+        minHeight: '100vh',
       }}
     >
       {/* <ErrorBoundary> */}
       <Header />
       <Outlet />
+      <Footer />
       {/* </ErrorBoundary> */}
     </div>
   );

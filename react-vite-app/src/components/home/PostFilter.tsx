@@ -14,20 +14,24 @@ type PostFilterProps = {
 
 export const PostFilter = ({ filter, setFilter }: PostFilterProps) => {
   return (
-    <Stack direction="horizontal" className="justify-content-between mb-4">
+    <Stack
+      direction="horizontal"
+      className="justify-content-between"
+      style={{ marginBottom: '2rem' }}
+    >
       <MyInput
         value={filter.query}
         onChange={(query) => setFilter({ ...filter, query })}
-        placeholder="Search post"
+        placeholder="Искать пост"
       />
 
       <MySelect
         value={filter.sort}
         onChange={(sort) => setFilter({ ...filter, sort })}
-        defaultValue="Sort By"
+        defaultValue="Сортировать по"
         options={[
-          { value: 'titleAZ', name: 'Title(A-Z)' },
-          { value: 'titleZA', name: 'Title(Z-A)' },
+          { value: 'titleAZ', name: 'Заголовку(A-Я)' },
+          { value: 'titleZA', name: 'Заголовку(Я-A)' },
         ]}
       />
     </Stack>

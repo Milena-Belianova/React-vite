@@ -1,45 +1,41 @@
 import { useState } from 'react';
 import { Card, Button, Collapse, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Post } from '../../redux/slices/postsSlice';
 
-export type PostItemType = {
-  id?: number;
-  title: string;
-  text: string;
-};
-
-export const PostItem = ({ title, text }: PostItemType) => {
+export const PostItem = ({ title, body, userId }: Post) => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <Card
       style={{ minWidth: '19rem' }}
       className="flex-grow-1 flex-row bg-light"
     >
-      <Link to="/user">
-        <div
-          className="d-flex p-3 align-items-center justify-content-center"
-          style={{ height: '100%' }}
-        >
-          <Image
-            src="https://avatars2.githubusercontent.com/u/37842853?v=4"
-            style={{ maxWidth: '7rem', maxHeight: '7rem' }}
-            className="img-thumbnail"
-            alt="user avatar"
-            roundedCircle
-          />
-        </div>
-      </Link>
+      <div
+        className="d-flex p-3 align-items-center justify-content-center"
+        style={{ height: '100%' }}
+      >
+        <Image
+          src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+          style={{ maxWidth: '7rem', maxHeight: '7rem', cursor: 'pointer' }}
+          className="img-thumbnail"
+          alt="user avatar"
+          roundedCircle
+          onClick={() => navigate(`/user/${userId}`)}
+        />
+      </div>
+
       <Card.Body>
         <Card.Title>{title}</Card.Title>
-        <Card.Text>{text}</Card.Text>
+        <Card.Text>{body}</Card.Text>
         <Button
           onClick={() => setOpen(!open)}
           aria-controls="collapse-text"
           aria-expanded={open}
           variant="outline-primary"
         >
-          Comments
+          Комментарии
         </Button>
         <Collapse in={open}>
           <div

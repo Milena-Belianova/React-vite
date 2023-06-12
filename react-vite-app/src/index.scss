@@ -1,1 +1,10 @@
+.logo {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
 
+.logo:hover {
+  fill: #0d6efd;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg); 
+}
