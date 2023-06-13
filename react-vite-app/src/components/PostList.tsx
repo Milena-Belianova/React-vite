@@ -1,7 +1,7 @@
 import { Stack } from 'react-bootstrap';
 import { PostItem } from './PostItem';
-import { Post } from '../../redux/slices/postsSlice';
-import { ErrorMessage } from '../UI/ErrorMessage';
+import { Post } from '../redux/slices/postsSlice';
+import { ErrorMessage } from './UI/ErrorMessage';
 
 type PostListProps = {
   posts: Array<Post>;

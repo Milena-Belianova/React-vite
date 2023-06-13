@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Image from 'react-bootstrap/Image';
 import { Stack } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Header = () => {
   return (
@@ -64,12 +64,12 @@ export const Header = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Link to="/" className="nav-link">
+                    <NavLink to="/" className="nav-link">
                       Список постов
-                    </Link>
-                    <Link to="/about" className="nav-link">
+                    </NavLink>
+                    <NavLink to="/about" className="nav-link">
                       Обо мне
-                    </Link>
+                    </NavLink>
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>

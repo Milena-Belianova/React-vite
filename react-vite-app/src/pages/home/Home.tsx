@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   getPosts,
   selectIsLoading,
@@ -10,14 +10,14 @@ import {
   selectPostTotalCount,
   selectPosts,
   setIsLoading,
-} from '../redux/slices/postsSlice';
-import { PostList } from '../components/home/PostList';
-import { PostFilter } from '../components/home/PostFilter';
-import { usePosts } from '../hooks/usePosts';
-import { Loader } from '../components/UI/Loader';
-import { ErrorMessage } from '../components/UI/ErrorMessage';
-import { PaginationBlock } from '../components/UI/PaginationBlock';
-import { getPageCount } from '../utils/pages';
+} from '../../redux/slices/postsSlice';
+import { PostList } from '../../components/PostList';
+import { PostFilter } from './components/PostFilter';
+import { usePosts } from '../../hooks/usePosts';
+import { Loader } from '../../components/UI/Loader';
+import { ErrorMessage } from '../../components/UI/ErrorMessage';
+import { PaginationBlock } from '../../components/UI/PaginationBlock';
+import { getPageCount } from '../../utils/pages';
 
 export const Home = () => {
   const dispatch = useAppDispatch();

@@ -1,6 +1,6 @@
 import { Stack } from 'react-bootstrap';
-import { MyInput } from '../UI/MyInput';
-import { MySelect } from '../UI/MySelect';
+import { MyInput } from '../../../components/UI/MyInput';
+import { MySelect } from '../../../components/UI/MySelect';
 
 type Filter = {
   sort: string;

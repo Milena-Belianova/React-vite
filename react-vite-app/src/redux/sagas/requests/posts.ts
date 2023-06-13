@@ -11,9 +11,9 @@ export function requestGetPosts(limit = 10, page = 1) {
   });
 }
 
-export function requestGetPostsByUserId(id: string) {
+export function requestGetPostsByUserId(id: number) {
   return axios.request({
     method: 'get',
-    url: `https://jsonplaceholder.typicode.com/posts?userId=${id}`,
+    url: `https://jsonplaceholder.typicode.com/users/${id}/posts`,
   });
 }

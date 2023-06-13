@@ -1,9 +1,9 @@
 import { RouterProvider, createHashRouter } from 'react-router-dom';
-import { Home } from './routes/Home';
-import NotFound from './routes/NotFound';
-import { UserDetails } from './routes/UserDetails';
-import { AboutMe } from './routes/AboutMe';
-import Root from './routes/Root';
+import { Home } from './pages/home/Home';
+import { NotFound } from './pages/NotFound';
+import { UserDetails } from './pages/users/UserDetails';
+import { AboutMe } from './pages/about/AboutMe';
+import Root from './pages/root/Root';
 
 export function AppRouter() {
   const router = createHashRouter([
@@ -20,7 +20,7 @@ export function AppRouter() {
           element: <AboutMe />,
         },
         {
-          path: '/user/:id',
+          path: '/users/:id',
           element: <UserDetails />,
         },
         {

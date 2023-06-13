@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card, Button, Collapse, Image } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { Post } from '../../redux/slices/postsSlice';
+import { Post } from '../redux/slices/postsSlice';
 
 export const PostItem = ({ title, body, userId }: Post) => {
   const [open, setOpen] = useState(false);
@@ -22,7 +22,7 @@ export const PostItem = ({ title, body, userId }: Post) => {
           className="img-thumbnail"
           alt="user avatar"
           roundedCircle
-          onClick={() => navigate(`/user/${userId}`)}
+          onClick={() => navigate(`/users/${userId}`)}
         />
       </div>
 
