@@ -5,10 +5,16 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Image from 'react-bootstrap/Image';
 import { Stack } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <div className="bg-light">
+    <div className="bg-light position-sticky">
       <Container>
         {['lg'].map((expand) => (
           <Navbar key={expand} expand={expand} style={{ minHeight: '5.5rem' }}>
@@ -29,11 +35,14 @@ export const Header = () => {
               </Link>
               <Navbar.Toggle
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
+                onClick={handleShow}
               />
               <Navbar.Offcanvas
                 id={`offcanvasNavbar-expand-${expand}`}
                 aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
                 placement="end"
+                show={show}
+                onHide={handleClose}
               >
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
@@ -64,10 +73,14 @@ export const Header = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <NavLink to="/" className="nav-link">
+                    <NavLink to="/" className="nav-link" onClick={handleClose}>
                       Список постов
                     </NavLink>
-                    <NavLink to="/about" className="nav-link">
+                    <NavLink
+                      to="/about"
+                      className="nav-link"
+                      onClick={handleClose}
+                    >
                       Обо мне
                     </NavLink>
                   </Nav>

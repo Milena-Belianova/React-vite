@@ -27,7 +27,9 @@ export const PaginationBlock = ({
 
   return (
     <div style={{ marginTop: '2rem', marginBottom: '4rem' }}>
-      <Pagination className="justify-content-center">{items}</Pagination>
+      <Pagination className="justify-content-center flex-wrap">
+        {items}
+      </Pagination>
     </div>
   );
 };

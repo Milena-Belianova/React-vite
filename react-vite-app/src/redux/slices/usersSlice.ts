@@ -82,6 +82,7 @@ export const {
   setUsersError,
 } = usersSlice.actions;
 
+export const selectUser = (state: RootState) => state.users.user;
 export const selectUsersPosts = (state: RootState) => state.users.usersPosts;
 export const selectIsLoading = (state: RootState) => state.users.isLoading;
 export const selectUsersError = (state: RootState) => state.users.usersError;

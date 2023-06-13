@@ -16,7 +16,8 @@ export const PostFilter = ({ filter, setFilter }: PostFilterProps) => {
   return (
     <Stack
       direction="horizontal"
-      className="justify-content-between"
+      className="justify-content-between flex-wrap filters__container"
+      gap={2}
       style={{ marginBottom: '2rem' }}
     >
       <MyInput

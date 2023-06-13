@@ -10,14 +10,14 @@ export const PostItem = ({ title, body, userId }: Post) => {
   return (
     <Card
       style={{ minWidth: '19rem' }}
-      className="flex-grow-1 flex-row bg-light"
+      className="flex-grow-1 flex-row bg-light post-item"
     >
       <div
         className="d-flex p-3 align-items-center justify-content-center"
         style={{ height: '100%' }}
       >
         <Image
-          src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+          src="src/assets/user-avatar.png"
           style={{ maxWidth: '7rem', maxHeight: '7rem', cursor: 'pointer' }}
           className="img-thumbnail"
           alt="user avatar"
