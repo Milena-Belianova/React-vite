@@ -32,6 +32,7 @@ export const postsSlice = createSlice({
   reducers: {
     setPosts: (state, action: PayloadAction<Array<Post>>) => {
       state.posts = action.payload;
+      state.posts.map((p) => ({ ...p, comments: [] }));
     },
     getPosts: (
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

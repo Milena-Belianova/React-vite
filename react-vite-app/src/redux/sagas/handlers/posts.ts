@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { call, put } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { requestGetPosts, requestGetPostsByUserId } from '../requests/posts';
+import { requestGetPosts } from '../requests/posts';
 import {
   Post,
   setPostError,
@@ -14,10 +14,6 @@ export type PaginationParams = {
   page?: number;
 };
 
-export type UserInfo = {
-  id: number;
-};
-
 export function* handleGetPosts(action: PayloadAction<PaginationParams>) {
   try {
     const { payload } = action;
@@ -27,23 +23,6 @@ export function* handleGetPosts(action: PayloadAction<PaginationParams>) {
     const { headers, data } = response;
     yield put(setPosts(data));
     yield put(setPostTotalCount(+headers['x-total-count']));
-  } catch (error) {
-    if (error instanceof Error) {
-      yield put(setPostError(error.message));
-    }
-  }
-}
-
-export function* handleGetPostsByUserId(action: PayloadAction<UserInfo>) {
-  try {
-    const { payload } = action;
-    const { id } = payload;
-    const response: { data: Array<Post> } = yield call(
-      requestGetPostsByUserId,
-      id
-    );
-    const { data } = response;
-    yield put(setPosts(data));
   } catch (error) {
     if (error instanceof Error) {
       yield put(setPostError(error.message));

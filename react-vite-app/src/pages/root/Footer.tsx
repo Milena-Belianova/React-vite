@@ -1,4 +1,5 @@
 import { Container } from 'react-bootstrap';
+import { BsHeartHalf } from 'react-icons/bs';
 
 export const Footer = () => {
   return (
@@ -7,7 +8,9 @@ export const Footer = () => {
       style={{ minHeight: '5.5rem', marginTop: 'auto' }}
     >
       <Container>
-        <p style={{ margin: '0' }}>Footer</p>
+        <p style={{ margin: '0' }} className="text-end">
+          Сделано с любовью <BsHeartHalf />
+        </p>
       </Container>
     </div>
   );

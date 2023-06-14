@@ -4,9 +4,15 @@ import { handleGetPosts } from './handlers/posts';
 import { handleGetPostsByUserId, handleGetUser } from './handlers/users';
 import { getPosts } from '../slices/postsSlice';
 import { getUsersPosts, getUser } from '../slices/usersSlice';
+import { getComments } from '../slices/commentsSlice';
+import { handleGetPostComments } from './handlers/comments';
 
 function* watcherPostsSaga() {
   yield takeLatest(getPosts.type, handleGetPosts);
+}
+
+function* watcherCommentsSaga() {
+  yield takeLatest(getComments.type, handleGetPostComments);
 }
 
 function* watcherUsersPostsSaga() {
@@ -18,5 +24,10 @@ function* watcherUsersSaga() {
 }
 
 export default function* rootSaga() {
-  yield all([watcherPostsSaga(), watcherUsersPostsSaga(), watcherUsersSaga()]);
+  yield all([
+    watcherPostsSaga(),
+    watcherCommentsSaga(),
+    watcherUsersPostsSaga(),
+    watcherUsersSaga(),
+  ]);
 }
