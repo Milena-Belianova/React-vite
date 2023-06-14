@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { Comment } from './Comment';
 import { ErrorMessage } from './UI/ErrorMessage';
 import { Loader } from './UI/Loader';
+import userAvatar from '../assets/user-avatar.png';
 
 export const PostItem = ({ id, title, body, userId }: Post) => {
   const [open, setOpen] = useState(false);
@@ -44,7 +45,7 @@ export const PostItem = ({ id, title, body, userId }: Post) => {
         style={{ height: '100%' }}
       >
         <Image
-          src="src/assets/user-avatar.png"
+          src={userAvatar}
           style={{ maxWidth: '7rem', maxHeight: '7rem', cursor: 'pointer' }}
           className="img-thumbnail"
           alt="user avatar"

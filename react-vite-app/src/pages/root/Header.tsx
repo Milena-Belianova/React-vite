@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image';
 import { Stack } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import myAvatar from '../../assets/my-ava.jpg';
 
 export const Header = () => {
   const [show, setShow] = useState(false);
@@ -48,7 +49,7 @@ export const Header = () => {
                   <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                     <Stack direction="horizontal" gap={2}>
                       <Image
-                        src="src/assets/my-ava.jpg"
+                        src={myAvatar}
                         style={{
                           width: '4rem',
                           height: '4rem',

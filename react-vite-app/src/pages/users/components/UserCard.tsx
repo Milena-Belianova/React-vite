@@ -1,5 +1,6 @@
 import { Card, Stack, Image } from 'react-bootstrap';
 import { User } from '../../../redux/slices/usersSlice';
+import userAvatar from '../../../assets/user-avatar.png';
 
 type UserCardParams = {
   user: User | null;
@@ -14,7 +15,7 @@ export const UserCard = ({ user }: UserCardParams) => {
       <Card.Header className="d-flex align-items-center justify-content-center">
         <div className="d-flex p-3 align-items-center justify-content-center">
           <Image
-            src="src/assets/user-avatar.png"
+            src={userAvatar}
             style={{ maxWidth: '7rem', maxHeight: '7rem' }}
             className="img-thumbnail"
             alt="user avatar"
