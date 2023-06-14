@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import { WrappedApp } from './App';
+import './index.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from 'react-redux';
+import { App } from './App';
+import { store } from './redux/store';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <WrappedApp />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
