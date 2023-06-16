@@ -1,0 +1,12 @@
+import axios from 'axios';
+
+export function requestGetPosts(limit = 10, page = 1) {
+  return axios.request({
+    method: 'get',
+    url: `https://jsonplaceholder.typicode.com/posts`,
+    params: {
+      _limit: limit,
+      _page: page,
+    },
+  });
+}
